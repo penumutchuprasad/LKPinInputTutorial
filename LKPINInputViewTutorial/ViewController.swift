@@ -12,15 +12,61 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    @IBOutlet var imgView: UIImageView!
+    @IBOutlet var ibPinView: LKPINView!
 
+    var pinsView: LKPINView!
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+
+        setupPINView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        ibPinView.becomeFirstResponder()
+        
+    }
+    
+    private func setupPINView() {
+        
+        pinsView = LKPINView.init(frame: .zero)
+        pinsView.translatesAutoresizingMaskIntoConstraints = false
+        pinsView.tag = 11
+        pinsView.addTarget(self, action: #selector(onPINEditing(_:)), for: .editingDidEnd)
+        imgView.addSubview(pinsView)
+        
+        imgView.addConstraints([
+            
+            pinsView.centerXAnchor.constraint(equalTo: imgView.centerXAnchor),
+            pinsView.widthAnchor.constraint(equalTo: imgView.widthAnchor, multiplier: 0.9),
+            pinsView.heightAnchor.constraint(equalToConstant: 35),
+            pinsView.bottomAnchor.constraint(equalTo: imgView.bottomAnchor, constant: -50)
+            
+            ])
+        
+    }
+   
+    @IBAction func onPINEditing(_ sender: LKPINView) {
+        
+        if sender.tag == 11 {
+            print("Programatically :: PIN is ---> \(sender.pinString)")
+            
+        } else {
+            print("IBDesign :: PIN is ---> \(sender.pinString)")
+            sender.resignFirstResponder()
+            pinsView.becomeFirstResponder()
+        }
+        
+        print("**************************************")
+        
     }
 
 

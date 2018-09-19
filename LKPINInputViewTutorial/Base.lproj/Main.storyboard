@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +14,75 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LKPINInputViewTutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="aql-o3-d0F">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IB Design" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6w4-bb-0hB">
+                                <rect key="frame" x="16" y="28" width="343" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Programatically" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVc-xr-qVV">
+                                <rect key="frame" x="16" y="173" width="343" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSN-fT-eJq" customClass="LKPINView" customModule="LKPINInputViewTutorial" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="68" width="375" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.68948844149999999" blue="0.1264209385" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="d4k-mF-hHC"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfDigits">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onPINEditing:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="FGD-zh-DDa"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qSN-fT-eJq" firstAttribute="top" secondItem="6w4-bb-0hB" secondAttribute="bottom" constant="12" id="8e6-6x-R3x"/>
+                            <constraint firstItem="aql-o3-d0F" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" id="P6o-9M-LFF"/>
+                            <constraint firstItem="qSN-fT-eJq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TUB-ft-ed1"/>
+                            <constraint firstItem="gVc-xr-qVV" firstAttribute="leading" secondItem="6w4-bb-0hB" secondAttribute="leading" id="YO3-gD-a8r"/>
+                            <constraint firstItem="6w4-bb-0hB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ZBZ-Je-wfP"/>
+                            <constraint firstItem="aql-o3-d0F" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="b9v-Sc-Jdt"/>
+                            <constraint firstItem="6w4-bb-0hB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="eaT-kO-JyD"/>
+                            <constraint firstItem="gVc-xr-qVV" firstAttribute="centerY" secondItem="aql-o3-d0F" secondAttribute="centerY" id="egA-p7-HHX"/>
+                            <constraint firstItem="aql-o3-d0F" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="haQ-7E-xMu"/>
+                            <constraint firstItem="aql-o3-d0F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="loy-eN-6VC"/>
+                            <constraint firstItem="gVc-xr-qVV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oUp-Xb-UHz"/>
+                            <constraint firstItem="6w4-bb-0hB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pTB-mr-T3K"/>
+                            <constraint firstItem="qSN-fT-eJq" firstAttribute="width" secondItem="aql-o3-d0F" secondAttribute="width" id="vIF-32-M9R"/>
+                            <constraint firstItem="aql-o3-d0F" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xyM-An-2p4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="ibPinView" destination="qSN-fT-eJq" id="Ukx-2G-1gl"/>
+                        <outlet property="imgView" destination="aql-o3-d0F" id="GtQ-dw-zPQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg" width="852" height="480"/>
+    </resources>
 </document>
